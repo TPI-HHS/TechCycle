@@ -8,6 +8,7 @@ const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const setupSwagger = require("./swagger/swagger.js");
 require("dotenv").config();
 
 app.use(cors());
@@ -54,6 +55,8 @@ const setupRoutes = () => {
 createClient;
 setupDatabase();
 setupRoutes();
+
+setupSwagger(app);
 
 app.get("/api/v1", async (req, res) => {
   res.json({ "This is": "not the right page to start" });

@@ -40,4 +40,8 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 // Swagger page
+const swaggerSetup = (app) => {
 app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+};
+
+module.exports = swaggerSetup;
