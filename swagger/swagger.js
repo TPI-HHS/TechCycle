@@ -41,7 +41,3 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 // Swagger page
 app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-app.listen(port, () => {
-  console.log(`Swagger server listening on port ${port}`);
-});
