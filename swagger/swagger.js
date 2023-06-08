@@ -20,7 +20,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3001/api/v1",
+        url: "https://techcycle-backend.azurewebsites.net/api/v1",
       },
     ],
   },
