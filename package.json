@@ -1,0 +1,32 @@
+{
+  "name": "tech-cycle",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "frontend dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint",
+    "prettier-check": "npx prettier --check src/**/*.{ts,tsx}",
+    "prettier-format": "npx prettier --write src/**/*.{ts,tsx} && npx eslint --fix src/**/*.{ts,tsx}"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.9",
+    "@mui/material": "^5.11.7",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "axios": "^1.4.0",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "eslint": "^8.35.0",
+    "eslint-config-next": "^13.2.1"
+  }
+}
