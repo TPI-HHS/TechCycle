@@ -55,7 +55,6 @@ const setupRoutes = () => {
 createClient;
 setupDatabase();
 setupRoutes();
-
 setupSwagger(app);
 
 app.get("/api/v1", async (req, res) => {
@@ -64,6 +63,5 @@ app.get("/api/v1", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
-
   swagger;
 });

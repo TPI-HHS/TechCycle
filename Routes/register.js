@@ -7,8 +7,7 @@ router.post('/register', async (req, res) => {
     const newItem = {
       username: req.body.username,
       password: bcrypt.hashSync(req.body.password, 8),
-      email: req.body.email,
-      role: req.body.role
+      email: req.body.email
     }
     try {
       console.log(newItem)

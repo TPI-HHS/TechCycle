@@ -3,9 +3,6 @@ const swaggerUi = require("swagger-ui-express");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const port = process.env.PORT || 5002;
-const fs = require("fs");
-const path = require("path");
 
 app.use(cors());
 
@@ -40,8 +37,10 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 // Swagger page
-const swaggerSetup = (app) => {
 app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+const swaggerSetup = (app) => {
+  app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 };
 
 module.exports = swaggerSetup;

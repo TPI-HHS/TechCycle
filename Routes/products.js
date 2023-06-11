@@ -18,6 +18,24 @@ router.get('/products', async (req, res) => {
   }
 });
 
+router.get("/products/:category", async (req, res) => {
+  const searchType = req.params.category;
+
+  try {
+    const category = await Product.findAll({
+      where: { category: searchType },
+    });
+    if (category.length === 0) {
+      res.status(404).send({ error: `No ${searchType} found` });
+    } else {
+      res.status(200).json(category);
+    }
+  } catch (error) {
+    res.status(500).send({ error: `Error retrieving ${searchType}` });
+    console.log(`Unable to retrieve ${searchType}`, error);
+  }
+});
+
 router.post('/products', verifyJWT, authenticateToken, authorizeRole('employee'), async (req, res) => {
   const newItem = {
     name: req.body.name,
@@ -25,6 +43,8 @@ router.post('/products', verifyJWT, authenticateToken, authorizeRole('employee')
     description: req.body.description,
     stocklevel: req.body.stocklevel,
     model: req.body.model,
+    category: req.body.category,
+    image: req.body.image,
   }
   try {
     console.log(newItem)

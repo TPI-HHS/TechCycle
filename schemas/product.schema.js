@@ -151,6 +151,40 @@
  */
 
 /**
+ * @swagger
+ * /products/{type}:
+ *  get:
+ *    operationId: getProductsByType
+ *    tags: ['Products']
+ *    summary: "Get products by type"
+ *    parameters:
+ *      - name: type
+ *        in: path
+ *        description: Product type (monitor, desktop, laptop)
+ *        required: true
+ *        type: string
+ *    responses:
+ *      200:
+ *        description: "OK"
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: "#/components/schemas/Product"
+ *      404:
+ *        description: "No products found"
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: "#/components/schemas/Error"
+ *      500:
+ *        description: "Internal Server Error"
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: "#/components/schemas/Error"
+ */
+
+/**
  *
  * @swagger
  * components:
@@ -163,6 +197,8 @@
  *           - description
  *           - stocklevel
  *           - price
+ *           - image
+ *           - category
  *       properties:
  *         id:
  *           type: integer
@@ -171,8 +207,7 @@
  *           type: string
  *           description: Product name
  *         model:
- *           type: string
- *           enum: [desktop, laptop, monitor]
+ *           type: integer
  *           description: Product model
  *         description:
  *           type: string
@@ -185,6 +220,13 @@
  *           type: number
  *           format: float
  *           description: Product price
+ *         category:
+ *           type: string
+ *           enum: [desktop, laptop, monitor]
+ *           description: Product category
+ *         image:
+ *           type: string
+ *           description: Product image url
  *   securitySchemes:
  *     BearerAuth:
  *       type: http
