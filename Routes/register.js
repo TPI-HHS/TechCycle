@@ -1,24 +1,28 @@
-const express = require('express')
-const router = express.Router()
-const bcrypt = require('bcrypt')
-const User = require('../models/user.model')
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcrypt");
+const User = require("../models/user.model");
 
-router.post('/register', async (req, res) => {
-    const newItem = {
-      username: req.body.username,
-      password: bcrypt.hashSync(req.body.password, 8),
-      email: req.body.email
-    }
-    try {
-      console.log(newItem)
-      const newUser = await User.create(newItem)
+router.post("/register", async (req, res) => {
+  const newItem = {
+    username: req.body.username,
+    password: bcrypt.hashSync(req.body.password, 8),
+    email: req.body.email,
+  };
+  try {
+    if (req.body.email.includes("student.nl")) {
+      console.log(newItem);
+      const newUser = await User.create(newItem);
       if (newUser) {
-        res.status(201).send(newUser)
+        res.status(201).send(newUser);
       }
-    } catch (error) {
-      res.status(500).send({ error: 'Error creating user' })
-      console.log('Unable to create user', error)
+    } else {
+      res.status(404).send("Email given is not a valid student email address");
     }
-  });
+  } catch (error) {
+    res.status(500).send({ error: "Error creating user" });
+    console.log("Unable to create user", error);
+  }
+});
 
-  module.exports = router
+module.exports = router;
